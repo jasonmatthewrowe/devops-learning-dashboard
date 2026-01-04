@@ -2,11 +2,24 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-// Read environment variables with defaults
-const ENV_NAME = process.env.ENVIRONMENT || 'development';
+// Get branch name from Vercel's environment variable
+const branch = process.env.VERCEL_GIT_COMMIT_REF || 'develop';
+
+// Map branch names to environment names
+const branchToEnv = {
+  'main': 'PRODUCTION',
+  'pre-production': 'PRE-PRODUCTION',
+  'staging': 'STAGING',
+  'develop': 'DEVELOPMENT'
+};
+
+// Set environment based on branch
+const ENV_NAME = branchToEnv[branch] || 'DEVELOPMENT';
 const VERSION = process.env.VERSION || '1.0.0';
 const BUILD_NUMBER = process.env.BUILD_NUMBER || '1';
 
+console.log('Detected branch:', branch);
+console.log('Mapped to environment:', ENV_NAME);
 // Get git commit SHA (if available)
 let COMMIT_SHA = 'unknown';
 try {
