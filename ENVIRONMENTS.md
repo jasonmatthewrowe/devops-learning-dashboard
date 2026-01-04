@@ -4,8 +4,7 @@
 
 \## Development
 
-\- URL: https://devops-learning-dashboard-h692bnoz4-jasonmatthewrowes-projects.vercel.app
-
+\- URL: https://devops-learning-dashboard-git-c5867e-jasonmatthewrowes-projects.vercel.app/
 \- Branch: `develop`
 
 \- Auto-deploys: On every push to develop
@@ -16,8 +15,7 @@
 
 \## Staging
 
-\- URL: https://devops-learning-dashboard-59h7rivib-jasonmatthewrowes-projects.vercel.app
-
+\- URL: https://devops-learning-dashboard-git-acf760-jasonmatthewrowes-projects.vercel.app/
 \- Branch: `staging`
 
 \- Auto-deploys: When PRs merge to staging
@@ -28,8 +26,7 @@
 
 \## Pre-Production
 
-\- URL: https://devops-learning-dashboard-b84ccj9nx-jasonmatthewrowes-projects.vercel.app
-
+\- URL: https://devops-learning-dashboard-git-332cef-jasonmatthewrowes-projects.vercel.app/
 \- Branch: `pre-production`
 
 \- Auto-deploys: When PRs merge to pre-production
