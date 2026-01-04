@@ -1,0 +1,29 @@
+{
+  "name": "devops-learning-dashboard",
+  "version": "1.0.0",
+  "description": "Simple static website for learning DevOps with environment-specific displays",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "build:dev": "ENVIRONMENT=dev node build.js",
+    "build:staging": "ENVIRONMENT=staging node build.js",
+    "build:preprod": "ENVIRONMENT=preprod node build.js",
+    "build:production": "ENVIRONMENT=production node build.js",
+    "start": "npm run build && http-server dist -p 8080 -o",
+    "start:dev": "ENVIRONMENT=dev npm run build && http-server dist -p 8080 -o",
+    "start:staging": "ENVIRONMENT=staging npm run build && http-server dist -p 8080 -o",
+    "start:preprod": "ENVIRONMENT=preprod npm run build && http-server dist -p 8080 -o",
+    "start:production": "ENVIRONMENT=production npm run build && http-server dist -p 8080 -o",
+    "serve": "http-server dist -p 8080 -o"
+  },
+  "keywords": [
+    "devops",
+    "static-site",
+    "environment"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
