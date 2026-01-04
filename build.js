@@ -1,3 +1,4 @@
+ 
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
@@ -15,7 +16,7 @@ const branchToEnv = {
 
 // Set environment based on branch
 const ENV_NAME = branchToEnv[branch] || 'DEVELOPMENT';
-const VERSION = process.env.VERSION || '1.0.0';
+const VERSION = process.env.VERSION || '1.1.0';
 const BUILD_NUMBER = process.env.BUILD_NUMBER || '1';
 
 console.log('Detected branch:', branch);
