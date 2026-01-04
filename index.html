@@ -3,91 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Learning Dashboard</title>
+    <title>DevOps Learning Dashboard - {{ENVIRONMENT}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Configuration for different environments
-        const envColors = {
-            'dev': { bg: 'bg-gray-600', text: 'text-gray-100', badge: 'bg-gray-800' },
-            'staging': { bg: 'bg-blue-600', text: 'text-blue-100', badge: 'bg-blue-800' },
-            'preprod': { bg: 'bg-yellow-500', text: 'text-yellow-900', badge: 'bg-yellow-700' },
-            'production': { bg: 'bg-green-600', text: 'text-green-100', badge: 'bg-green-800' }
-        };
-
-        // Get environment variables (would be injected at build/deploy time)
-        const ENV_NAME = '${ENV_NAME}' || 'dev';
-        const VERSION = '${VERSION}' || '1.0.0';
-        const COMMIT_SHA = '${COMMIT_SHA}' || 'abc123def';
-        const DEPLOY_TIMESTAMP = '${DEPLOY_TIMESTAMP}' || new Date().toISOString();
-        const BUILD_NUMBER = '${BUILD_NUMBER}' || '1';
-
-        // Apply environment-specific colors on load
-        window.addEventListener('DOMContentLoaded', function() {
-            const env = ENV_NAME.toLowerCase();
-            const colors = envColors[env] || envColors['dev'];
-
-            document.getElementById('app').className = `min-h-screen ${colors.bg} ${colors.text} flex flex-col items-center justify-center p-8`;
-            document.getElementById('env-badge').className = `inline-block ${colors.badge} px-12 py-6 rounded-3xl text-8xl font-black mb-8 shadow-2xl`;
-
-            // Update content
-            document.getElementById('env-name').textContent = ENV_NAME.toUpperCase();
-            document.getElementById('version').textContent = VERSION;
-            document.getElementById('commit').textContent = COMMIT_SHA.substring(0, 8);
-            document.getElementById('timestamp').textContent = new Date(DEPLOY_TIMESTAMP).toLocaleString();
-            document.getElementById('build').textContent = BUILD_NUMBER;
-        });
-    </script>
+    <style>
+        .env-production { background-color: #dcfce7; color: #166534; }
+        .env-pre-production { background-color: #fef9c3; color: #854d0e; }
+        .env-staging { background-color: #dbeafe; color: #1e40af; }
+        .env-development { background-color: #f3f4f6; color: #374151; }
+    </style>
 </head>
-<body>
-    <div id="app" class="min-h-screen bg-gray-600 text-gray-100 flex flex-col items-center justify-center p-8">
-        <!-- Large Environment Banner -->
-        <div class="text-center mb-12">
-            <div id="env-badge" class="inline-block bg-gray-800 px-12 py-6 rounded-3xl text-8xl font-black mb-8 shadow-2xl">
-                <span id="env-name">DEV</span>
-            </div>
-            <h1 class="text-6xl font-bold mb-4">DevOps Learning Dashboard</h1>
-            <p class="text-3xl opacity-90">Environment Status & Information</p>
-        </div>
-
-        <!-- Information Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full">
-            <!-- Version Card -->
-            <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-10 shadow-2xl">
-                <div class="text-2xl font-semibold mb-4 opacity-80">VERSION</div>
-                <div id="version" class="text-6xl font-black">1.0.0</div>
-            </div>
-
-            <!-- Commit SHA Card -->
-            <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-10 shadow-2xl">
-                <div class="text-2xl font-semibold mb-4 opacity-80">COMMIT</div>
-                <div id="commit" class="text-6xl font-black font-mono">abc123de</div>
-            </div>
-
-            <!-- Build Number Card -->
-            <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-10 shadow-2xl">
-                <div class="text-2xl font-semibold mb-4 opacity-80">BUILD NUMBER</div>
-                <div id="build" class="text-6xl font-black">#1</div>
-            </div>
-
-            <!-- Deployment Timestamp Card -->
-            <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-10 shadow-2xl">
-                <div class="text-2xl font-semibold mb-4 opacity-80">DEPLOYED</div>
-                <div id="timestamp" class="text-4xl font-bold">Loading...</div>
-            </div>
-        </div>
-
-        <!-- Instructions -->
-        <div class="mt-16 max-w-4xl bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8">
-            <h2 class="text-3xl font-bold mb-4">Environment Variables</h2>
-            <p class="text-xl mb-4">Set these variables before serving to customize the display:</p>
-            <ul class="text-lg space-y-2 font-mono">
-                <li><strong>ENV_NAME</strong>: dev | staging | preprod | production</li>
-                <li><strong>VERSION</strong>: Application version (e.g., 1.2.3)</li>
-                <li><strong>COMMIT_SHA</strong>: Git commit hash</li>
-                <li><strong>DEPLOY_TIMESTAMP</strong>: ISO timestamp</li>
-                <li><strong>BUILD_NUMBER</strong>: CI/CD build number</li>
-            </ul>
+<body class="min-h-screen flex items-center justify-center env-{{ENVIRONMENT}}">
+    <div class="text-center p-8">
+        <h1 class="text-8xl font-bold mb-4">{{ENVIRONMENT}}</h1>
+        <h2 class="text-2xl text-gray-600 mb-8">DevOps Learning Dashboard</h2>
+        
+        <div class="grid grid-cols-2 gap-4 max-w-md mx-auto text-left bg-white rounded-lg shadow p-6">
+            <div class="font-semibold">Branch:</div>
+            <div>{{BRANCH}}</div>
+            
+            <div class="font-semibold">Version:</div>
+            <div>{{VERSION}}</div>
+            
+            <div class="font-semibold">Commit:</div>
+            <div class="font-mono">{{COMMIT}}</div>
+            
+            <div class="font-semibold">Build:</div>
+            <div class="font-mono">{{BUILD_NUMBER}}</div>
+            
+            <div class="font-semibold">Deployed:</div>
+            <div>{{DEPLOYED}}</div>
         </div>
     </div>
 </body>
-</html>"<!-- Preprod trigger -->" 
+</html>
