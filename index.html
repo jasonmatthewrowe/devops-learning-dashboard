@@ -7,12 +7,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         // Configuration for different environments
-        const envColors = {
-            'dev': { bg: 'bg-gray-600', text: 'text-gray-100', badge: 'bg-gray-800' },
-            'staging': { bg: 'bg-blue-600', text: 'text-blue-100', badge: 'bg-blue-800' },
-            'preprod': { bg: 'bg-yellow-500', text: 'text-yellow-900', badge: 'bg-yellow-700' },
-            'production': { bg: 'bg-green-600', text: 'text-green-100', badge: 'bg-green-800' }
-        };
+       const envColors = {
+    'development': { bg: 'bg-gray-600', text: 'text-gray-100', badge: 'bg-gray-800' },
+    'staging': { bg: 'bg-blue-600', text: 'text-blue-100', badge: 'bg-blue-800' },
+    'pre-production': { bg: 'bg-yellow-500', text: 'text-yellow-900', badge: 'bg-yellow-700' },
+    'production': { bg: 'bg-green-600', text: 'text-green-100', badge: 'bg-green-800' }
+};
 
         // Get environment variables (would be injected at build/deploy time)
         const ENV_NAME = '${ENV_NAME}' || 'dev';
