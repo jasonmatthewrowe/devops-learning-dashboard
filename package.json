@@ -1,6 +1,6 @@
 {
   "name": "devops-learning-dashboard",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "Simple static website for learning DevOps with environment-specific displays",
   "main": "build.js",
   "scripts": {
